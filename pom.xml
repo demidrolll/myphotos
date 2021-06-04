@@ -10,8 +10,8 @@
     <modules>
         <module>myphotos-web</module>
         <module>myphotos-ejb</module>
-        <module>myphotos-rest</module>
-        <module>myphotos-ws</module>
+<!--        <module>myphotos-rest</module>-->
+<!--        <module>myphotos-ws</module>-->
         <module>myphotos-model</module>
         <module>myphotos-common</module>
         <module>myphotos-ear</module>
