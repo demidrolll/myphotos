@@ -1,4 +1,4 @@
-package exception;
+package com.demidrolll.myphotos.exception;
 
 public class ValidationException extends BusinessException {
 
