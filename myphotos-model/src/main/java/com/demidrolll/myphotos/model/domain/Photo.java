@@ -6,13 +6,18 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,12 +34,18 @@ public class Photo extends AbstractDomain {
     private long id;
 
     @Column(name = "small_url", nullable = false, length = 255, updatable = false)
+    @NotNull
+    @Size(max = 255)
     private String smallUrl;
 
     @Column(name = "large_url", nullable = false, length = 255, updatable = false)
+    @NotNull
+    @Size(max = 255)
     private String largeUrl;
 
     @Column(name = "original_url", nullable = false, length = 255, updatable = false)
+    @NotNull
+    @Size(max = 255)
     private String originalUrl;
 
     @Column(name = "views", nullable = false)
@@ -45,5 +56,11 @@ public class Photo extends AbstractDomain {
 
     @Column(name = "created", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
     private LocalDateTime created;
+
+    @NotNull
+    @JoinColumn(name = "profile_id", referencedColumnName = "id", nullable = false, updatable = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    private Profile profile;
 }

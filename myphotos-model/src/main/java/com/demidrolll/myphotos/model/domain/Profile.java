@@ -13,6 +13,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 @Entity
@@ -29,9 +31,13 @@ public class Profile extends AbstractDomain {
     private long id;
 
     @Column(name = "uid", nullable = false, length = 255, unique = true, updatable = false)
+    @NotNull
+    @Size(max = 255)
     private String uid;
 
     @Column(name = "email", nullable = false, length = 100, unique = true, updatable = false)
+    @NotNull
+    @Size(max = 100)
     private String email;
 
     @Column(name = "avatar_url", nullable = false, length = 255)
@@ -39,6 +45,7 @@ public class Profile extends AbstractDomain {
 
     @Column(name = "created", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
     private LocalDateTime created;
 
     @Column(name = "first_name", nullable = false, length = 60)
