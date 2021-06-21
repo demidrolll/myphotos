@@ -1,5 +1,7 @@
 package com.demidrolll.myphotos.model.domain;
 
+import com.demidrolll.myphotos.model.validation.Email;
+import com.demidrolll.myphotos.model.validation.EnglishLanguage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -38,9 +40,12 @@ public class Profile extends AbstractDomain {
     @Column(name = "email", nullable = false, length = 100, unique = true, updatable = false)
     @NotNull
     @Size(max = 100)
+    @Email
     private String email;
 
     @Column(name = "avatar_url", nullable = false, length = 255)
+    @NotNull
+    @Size(max = 255)
     private String avatarUrl;
 
     @Column(name = "created", nullable = false)
@@ -49,15 +54,27 @@ public class Profile extends AbstractDomain {
     private LocalDateTime created;
 
     @Column(name = "first_name", nullable = false, length = 60)
+    @NotNull(message = "{Profile.firstName.NotNull}")
+    @Size(min = 1, max = 60, message = "Profile.firstName.Size")
+    @EnglishLanguage(withNumbers = false, withSpecialSymbols = false)
     private String firstName;
 
-    @Column(name = "job_title", nullable = false, length = 100)
-    private String jobTitle;
-
     @Column(name = "last_name", nullable = false, length = 60)
+    @NotNull(message = "{Profile.lastName.NotNull}")
+    @Size(min = 1, max = 60, message = "Profile.lastName.Size")
+    @EnglishLanguage(withNumbers = false, withSpecialSymbols = false)
     private String lastName;
 
+    @Column(name = "job_title", nullable = false, length = 100)
+    @NotNull(message = "{Profile.jobTitle.NotNull}")
+    @Size(min = 5, max = 100, message = "Profile.jobTitle.Size")
+    @EnglishLanguage
+    private String jobTitle;
+
     @Column(name = "location", nullable = false, length = 100)
+    @NotNull(message = "{Profile.location.NotNull}")
+    @Size(min = 5, max = 100, message = "Profile.location.Size")
+    @EnglishLanguage
     private String location;
 
     @Column(name = "photo_count", nullable = false)
