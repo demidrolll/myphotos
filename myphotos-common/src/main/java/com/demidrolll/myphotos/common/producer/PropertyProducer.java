@@ -2,10 +2,9 @@ package com.demidrolll.myphotos.common.producer;
 
 import com.demidrolll.myphotos.common.annotation.cdi.Property;
 import com.demidrolll.myphotos.exception.ConfigException;
-
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
-import javax.inject.Inject;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.InjectionPoint;
+import jakarta.inject.Inject;
 
 public class PropertyProducer {
 

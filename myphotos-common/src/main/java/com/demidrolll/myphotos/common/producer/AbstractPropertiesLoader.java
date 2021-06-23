@@ -1,8 +1,8 @@
 package com.demidrolll.myphotos.common.producer;
 
 import com.demidrolll.myphotos.common.resource.ResourceLoaderManager;
+import jakarta.inject.Inject;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;

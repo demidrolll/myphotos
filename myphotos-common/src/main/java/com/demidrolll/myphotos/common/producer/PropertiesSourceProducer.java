@@ -1,9 +1,9 @@
 package com.demidrolll.myphotos.common.producer;
 
 import com.demidrolll.myphotos.common.annotation.cdi.PropertiesSource;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.InjectionPoint;
 
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
 import java.util.Properties;
 
 public class PropertiesSourceProducer extends AbstractPropertiesLoader {

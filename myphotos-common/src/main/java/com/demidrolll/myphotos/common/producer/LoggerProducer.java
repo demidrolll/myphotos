@@ -1,7 +1,8 @@
 package com.demidrolll.myphotos.common.producer;
 
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
+import jakarta.enterprise.inject.Produces;
+import jakarta.enterprise.inject.spi.InjectionPoint;
+
 import java.util.logging.Logger;
 
 public class LoggerProducer {

@@ -1,7 +1,7 @@
 package com.demidrolll.myphotos.model.validation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class EnglishLanguageConstraintValidator implements ConstraintValidator<EnglishLanguage, String> {
 
