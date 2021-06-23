@@ -38,18 +38,18 @@
             <version>1.0</version>
             <type>war</type>
         </dependency>
-        <dependency>
-            <groupId>com.demidrolll</groupId>
-            <artifactId>myphotos-rest</artifactId>
-            <version>1.0</version>
-            <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>com.demidrolll</groupId>
-            <artifactId>myphotos-ws</artifactId>
-            <version>1.0</version>
-            <type>war</type>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.demidrolll</groupId>-->
+<!--            <artifactId>myphotos-rest</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--            <type>war</type>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.demidrolll</groupId>-->
+<!--            <artifactId>myphotos-ws</artifactId>-->
+<!--            <version>1.0</version>-->
+<!--            <type>war</type>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -67,18 +67,18 @@
                             <bundleFileName>myphotos-web-1.0.war</bundleFileName>
                             <contextRoot>/</contextRoot>
                         </webModule>
-                        <webModule>
-                            <groupId>com.demidrolll</groupId>
-                            <artifactId>myphotos-rest</artifactId>
-                            <bundleFileName>myphotos-rest-1.0.war</bundleFileName>
-                            <contextRoot>/api</contextRoot>
-                        </webModule>
-                        <webModule>
-                            <groupId>com.demidrolll</groupId>
-                            <artifactId>myphotos-ws</artifactId>
-                            <bundleFileName>myphotos-ws-1.0.war</bundleFileName>
-                            <contextRoot>/ws</contextRoot>
-                        </webModule>
+<!--                        <webModule>-->
+<!--                            <groupId>com.demidrolll</groupId>-->
+<!--                            <artifactId>myphotos-rest</artifactId>-->
+<!--                            <bundleFileName>myphotos-rest-1.0.war</bundleFileName>-->
+<!--                            <contextRoot>/api</contextRoot>-->
+<!--                        </webModule>-->
+<!--                        <webModule>-->
+<!--                            <groupId>com.demidrolll</groupId>-->
+<!--                            <artifactId>myphotos-ws</artifactId>-->
+<!--                            <bundleFileName>myphotos-ws-1.0.war</bundleFileName>-->
+<!--                            <contextRoot>/ws</contextRoot>-->
+<!--                        </webModule>-->
                     </modules>
                 </configuration>
             </plugin>
