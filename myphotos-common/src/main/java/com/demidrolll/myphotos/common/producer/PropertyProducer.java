@@ -2,10 +2,12 @@ package com.demidrolll.myphotos.common.producer;
 
 import com.demidrolll.myphotos.common.annotation.cdi.Property;
 import com.demidrolll.myphotos.exception.ConfigException;
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 import jakarta.inject.Inject;
 
+@Dependent
 public class PropertyProducer {
 
     @Inject
