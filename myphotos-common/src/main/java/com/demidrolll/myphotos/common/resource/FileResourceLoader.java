@@ -8,9 +8,6 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-/**
- * @author Dzmitry Iuzhanka (dmitry.ivjenko@softclub.by)
- */
 @ApplicationScoped
 public class FileResourceLoader implements ResourceLoader {
 
