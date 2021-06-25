@@ -28,12 +28,6 @@
         </dependency>
         <dependency>
             <groupId>com.demidrolll</groupId>
-            <artifactId>myphotos-ejb</artifactId>
-            <version>1.0</version>
-            <type>ejb</type>
-        </dependency>
-        <dependency>
-            <groupId>com.demidrolll</groupId>
             <artifactId>myphotos-web</artifactId>
             <version>1.0</version>
             <type>war</type>

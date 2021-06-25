@@ -2,13 +2,13 @@ package com.demidrolll.myphotos.ejb.repository.mock;
 
 import com.demidrolll.myphotos.ejb.repository.PhotoRepository;
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.Dependent;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Inject;
 
 import java.lang.reflect.Proxy;
 
-@ApplicationScoped
+@Dependent
 public class InMemoryRepositoryFactory {
 
     @Inject
