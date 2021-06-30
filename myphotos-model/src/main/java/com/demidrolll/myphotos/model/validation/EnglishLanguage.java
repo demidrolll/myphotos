@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = {EnglishLanguageConstraintValidator.class})
 public @interface EnglishLanguage {
 
-    String message() default "javax.validation.constraints.EnglishLanguage.message";
+    String message() default "jakarta.validation.constraints.EnglishLanguage.message";
 
     boolean withNumbers() default true;
 

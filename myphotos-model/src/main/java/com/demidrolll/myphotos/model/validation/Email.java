@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Email {
 
-    String message() default "{javax.validation.constraints.Email.message}";
+    String message() default "{jakarta.validation.constraints.Email.message}";
 
     Class<?>[] groups() default {};
 

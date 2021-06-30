@@ -11,6 +11,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -82,4 +83,9 @@ public class Profile extends AbstractDomain {
 
     @Column(name = "rating", nullable = false)
     private int rating;
+
+    @Transient
+    public String getFullName() {
+        return String.format("%s %s", getFirstName(), getLastName());
+    }
 }

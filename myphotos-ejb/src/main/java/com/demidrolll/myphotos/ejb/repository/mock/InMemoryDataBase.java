@@ -26,9 +26,9 @@ public class InMemoryDataBase {
         for (int i = 1; i <= 15; i++) {
             Photo photo = new Photo();
             photo.setProfile(profile);
-            String imageUrl = String.format("https://small_image/%s.jpg", i % 6 + 1);
+            String imageUrl = String.format("https://devstudy-net.github.io/myphotos-com-test-images/%s.jpg", i % 6 + 1);
             photo.setSmallUrl(imageUrl);
-            photo.setLargeUrl("https://large_image.jpg");
+            photo.setLargeUrl("https://devstudy-net.github.io/myphotos-com-test-images/large.jpg");
             photo.setOriginalUrl(imageUrl);
             photo.setViews(random.nextInt(100) * 10 + 1);
             photo.setDownloads(random.nextInt(20) * 10 + 1);
@@ -50,7 +50,7 @@ public class InMemoryDataBase {
         profile.setLastName("Hendricks");
         profile.setJobTitle("CEO of Pied Piper");
         profile.setLocation("Los Angeles, California");
-        profile.setAvatarUrl("https://avatar");
+        profile.setAvatarUrl("https://devstudy-net.github.io/myphotos-com-test-images/Richard-Hendricks.jpg");
 
         return profile;
     }
