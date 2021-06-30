@@ -14,7 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "access_token")
@@ -36,5 +36,5 @@ public class AccessToken {
     @Column(name = "created", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
-    private LocalDateTime created;
+    private Date created;
 }

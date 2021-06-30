@@ -3,9 +3,9 @@ package com.demidrolll.myphotos.ejb.repository.mock;
 import com.demidrolll.myphotos.model.domain.Photo;
 import com.demidrolll.myphotos.model.domain.Profile;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -32,7 +32,7 @@ public class InMemoryDataBase {
             photo.setOriginalUrl(imageUrl);
             photo.setViews(random.nextInt(100) * 10 + 1);
             photo.setDownloads(random.nextInt(20) * 10 + 1);
-            photo.setCreated(LocalDateTime.now());
+            photo.setCreated(new Date());
 
             profile.setPhotoCount(profile.getPhotoCount() + 1);
             photos.add(photo);
@@ -45,7 +45,7 @@ public class InMemoryDataBase {
         Profile profile = new Profile();
         profile.setId(1L);
         profile.setUid("richard-hendricks");
-        profile.setCreated(LocalDateTime.now());
+        profile.setCreated(new Date());
         profile.setFirstName("Richard");
         profile.setLastName("Hendricks");
         profile.setJobTitle("CEO of Pied Piper");

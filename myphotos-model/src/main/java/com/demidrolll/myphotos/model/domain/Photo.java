@@ -18,7 +18,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table(name = "photo")
@@ -57,7 +57,7 @@ public class Photo extends AbstractDomain {
     @Column(name = "created", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
-    private LocalDateTime created;
+    private Date created;
 
     @NotNull
     @JoinColumn(name = "profile_id", referencedColumnName = "id", nullable = false, updatable = false)
