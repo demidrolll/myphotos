@@ -21,7 +21,7 @@ import java.util.Set;
 
 import static com.demidrolll.myphotos.web.Constants.PHOTO_LIMIT;
 
-@WebServlet(urlPatterns = "/", loadOnStartup = 1)
+@WebServlet(value = "/", loadOnStartup = 1)
 public class ProfileController extends HttpServlet {
 
     private final Set<String> homeUrls = Set.of("/");
