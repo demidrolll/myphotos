@@ -49,7 +49,7 @@ public class Profile extends AbstractDomain {
     @Size(max = 255)
     private String avatarUrl;
 
-    @Column(name = "created", nullable = false)
+    @Column(name = "created", nullable = false, insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date created;

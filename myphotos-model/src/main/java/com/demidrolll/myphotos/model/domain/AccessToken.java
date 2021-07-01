@@ -33,7 +33,7 @@ public class AccessToken {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Profile profile;
 
-    @Column(name = "created", nullable = true)
+    @Column(name = "created", nullable = true, insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date created;

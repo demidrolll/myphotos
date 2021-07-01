@@ -54,7 +54,7 @@ public class Photo extends AbstractDomain {
     @Column(name = "downloads", nullable = false)
     private long downloads;
 
-    @Column(name = "created", nullable = false)
+    @Column(name = "created", nullable = false, insertable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date created;
