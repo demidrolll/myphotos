@@ -11,8 +11,14 @@ import java.util.Optional;
 public class ProfileRepositoryImpl extends AbstractJpaRepository<Profile, Long> implements ProfileRepository {
 
     @Override
-    public Optional<Profile> findByUid(String id) {
-        return Optional.empty();
+    @JpaQuery("SELECT p FROM Profile p WHERE p.uid = :uid")
+    public Optional<Profile> findByUid(String uid) {
+        List<Profile> profile = em
+                .createNamedQuery("Profile.findByUid", Profile.class)
+                .setParameter("uid", uid)
+                .getResultList();
+
+        return profile.isEmpty() ? Optional.empty() : Optional.of(profile.get(0));
     }
 
     @Override
