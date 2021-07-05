@@ -2,6 +2,8 @@ package com.demidrolll.myphotos.ejb.service.bean;
 
 import com.demidrolll.myphotos.ejb.repository.PhotoRepository;
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
+import com.demidrolll.myphotos.ejb.service.ImageStorageService;
+import com.demidrolll.myphotos.ejb.service.interceptor.AsyncOperationInterceptor;
 import com.demidrolll.myphotos.exception.ObjectNotFoundException;
 import com.demidrolll.myphotos.exception.ValidationException;
 import com.demidrolll.myphotos.model.AsyncOperation;
@@ -14,6 +16,7 @@ import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.service.PhotoService;
 import jakarta.annotation.Resource;
 import jakarta.ejb.Asynchronous;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Local;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.SessionContext;
@@ -21,6 +24,7 @@ import jakarta.ejb.Stateless;
 import jakarta.ejb.TransactionAttribute;
 import jakarta.ejb.TransactionAttributeType;
 import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
 
 import java.util.List;
 
@@ -37,6 +41,12 @@ public class PhotoServiceBean implements PhotoService {
 
     @Resource
     private SessionContext sessionContext;
+
+    @EJB
+    private ImageProcessorBean imageProcessorBean;
+
+    @Inject
+    private ImageStorageService imageStorageService;
 
     @Override
     public List<Photo> findProfilePhotos(Long profileId, Pageable pageable) {
@@ -84,14 +94,26 @@ public class PhotoServiceBean implements PhotoService {
 
     @Override
     @Asynchronous
+    @Interceptors(AsyncOperationInterceptor.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void uploadNewPhoto(Profile profile, ImageResource imageResource, AsyncOperation<Photo> asyncOperation) {
         try {
-            Photo photo = null;
+            Photo photo = uploadNewPhoto(profile, imageResource);
             asyncOperation.onSuccess(photo);
         } catch (Exception e) {
             sessionContext.setRollbackOnly();
             asyncOperation.onFailed(e);
         }
+    }
+
+    public Photo uploadNewPhoto(Profile profile, ImageResource imageResource) {
+        Photo photo = imageProcessorBean.processPhoto(imageResource);
+        photo.setProfile(profile);
+        photoRepository.create(photo);
+        photoRepository.flush();
+        profile.setPhotoCount(photoRepository.countProfilePhotos(profile.getId()));
+        profileRepository.update(profile);
+
+        return photo;
     }
 }

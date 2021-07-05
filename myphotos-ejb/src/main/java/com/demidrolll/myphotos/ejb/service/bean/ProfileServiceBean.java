@@ -1,19 +1,24 @@
 package com.demidrolll.myphotos.ejb.service.bean;
 
 import com.demidrolll.myphotos.common.annotation.cdi.Property;
+import com.demidrolll.myphotos.common.config.ImageCategory;
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
+import com.demidrolll.myphotos.ejb.service.ImageStorageService;
+import com.demidrolll.myphotos.ejb.service.interceptor.AsyncOperationInterceptor;
 import com.demidrolll.myphotos.exception.ObjectNotFoundException;
 import com.demidrolll.myphotos.model.AsyncOperation;
 import com.demidrolll.myphotos.model.ImageResource;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.service.ProfileService;
 import jakarta.ejb.Asynchronous;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Local;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.ejb.TransactionAttribute;
 import jakarta.ejb.TransactionAttributeType;
 import jakarta.inject.Inject;
+import jakarta.interceptor.Interceptors;
 
 import java.util.Optional;
 
@@ -28,6 +33,12 @@ public class ProfileServiceBean implements ProfileService {
 
     @Inject
     private ProfileRepository profileRepository;
+
+    @EJB
+    private ImageProcessorBean imageProcessorBean;
+
+    @Inject
+    private ImageStorageService imageStorageService;
 
     @Override
     public Profile findById(Long id) throws ObjectNotFoundException {
@@ -61,6 +72,7 @@ public class ProfileServiceBean implements ProfileService {
 
     @Override
     @Asynchronous
+    @Interceptors(AsyncOperationInterceptor.class)
     @TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
     public void uploadNewAvatar(Profile profile, ImageResource imageResource, AsyncOperation<Profile> asyncOperation) {
         try {
@@ -73,6 +85,12 @@ public class ProfileServiceBean implements ProfileService {
     }
 
     public void uploadNewAvatar(Profile profile, ImageResource imageResource) {
+        String avatarUrl = imageProcessorBean.processProfileAvatar(imageResource);
+        if (ImageCategory.isImageCategoryUrl(profile.getAvatarUrl())) {
+            imageStorageService.deletePublicImage(profile.getAvatarUrl());
+        }
+        profile.setAvatarUrl(avatarUrl);
+        profileRepository.update(profile);
     }
 
     public void setAvatarPlaceHolder(Long profileId) {
