@@ -9,6 +9,9 @@ import jakarta.enterprise.inject.spi.Bean;
 import jakarta.enterprise.inject.spi.BeanManager;
 import jakarta.enterprise.util.AnnotationLiteral;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.PersistenceUnit;
 import org.apache.commons.lang3.reflect.MethodUtils;
 
 import java.lang.annotation.ElementType;
@@ -16,6 +19,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -33,9 +38,14 @@ public class StaticJpaQueryInitializer {
     @Inject
     private JpaQueryParser jpaQueryParser;
 
+    @Inject
+    private JpaQueryCreator jpaQueryCreator;
+
     @PostConstruct
     private void postConstruct() {
-
+        Set<Class<?>> jpaRepositoryClasses = jpaRepositoryFinder.getJpaRepositoryClasses();
+        Map<String, String> namedQueriesMap = jpaQueryParser.getNamedQueriesMap(jpaRepositoryClasses);
+        jpaQueryCreator.addAllNamedQueries(namedQueriesMap);
     }
 
     @Retention(RetentionPolicy.RUNTIME)
@@ -88,9 +98,50 @@ public class StaticJpaQueryInitializer {
             return namedQueriesMap;
         }
 
-        private void addQueriesFromJpaRepository(Class<?> jpaRepositoryClass, Map<String, String> namedQueriesMap) {
+        protected void addQueriesFromJpaRepository(Class<?> jpaRepositoryClass, Map<String, String> namedQueriesMap) {
             for (Method method : MethodUtils.getMethodsWithAnnotation(jpaRepositoryClass, JpaQuery.class)) {
+                JpaQuery jpaQuery = method.getAnnotation(JpaQuery.class);
+                String key = jpaQuery.name();
+                if (key.isEmpty()) {
+                    key = String.format("%s.%s", getEntityClass(jpaRepositoryClass), method.getName());
+                }
+                String query = jpaQuery.value();
+                if (namedQueriesMap.put(key, query) != null) {
+                    throw new IllegalStateException("Detected named query duplicates: " + key);
+                }
+            }
+        }
 
+        protected String getEntityClass(Class<?> jpaRepositoryClass) {
+            Type type = jpaRepositoryClass;
+            while (type != null) {
+                if (type instanceof ParameterizedType) {
+                    return ((Class<?>) ((ParameterizedType) type).getActualTypeArguments()[0]).getSimpleName();
+                }
+                type = ((Class<?>) type).getGenericSuperclass();
+            }
+            throw new IllegalArgumentException("JPA class " + jpaRepositoryClass + " is not generic class");
+        }
+    }
+
+    @Dependent
+    public static class JpaQueryCreator {
+
+        @Inject
+        protected Logger logger;
+
+        @PersistenceUnit
+        protected EntityManagerFactory entityManagerFactory;
+
+        protected void addAllNamedQueries(Map<String, String> namedQueriesMap) {
+            EntityManager em = entityManagerFactory.createEntityManager();
+            try {
+                namedQueriesMap.forEach((key, value) -> {
+                    entityManagerFactory.addNamedQuery(key, em.createQuery(value));
+                    logger.log(Level.FINE, "Added named query: {0} -> {1}", new Object[]{key, value});
+                });
+            } finally {
+                em.close();
             }
         }
     }

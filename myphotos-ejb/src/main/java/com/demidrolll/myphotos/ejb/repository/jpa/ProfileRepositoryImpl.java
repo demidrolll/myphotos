@@ -7,7 +7,7 @@ import jakarta.enterprise.context.Dependent;
 import java.util.List;
 import java.util.Optional;
 
-import static com.demidrolll.myphotos.ejb.repository.jpa.StaticJpaQueryInitializer.JpaQuery;
+import com.demidrolll.myphotos.ejb.repository.jpa.StaticJpaQueryInitializer.JpaQuery;
 
 @Dependent
 public class ProfileRepositoryImpl extends AbstractJpaRepository<Profile, Long> implements ProfileRepository {
