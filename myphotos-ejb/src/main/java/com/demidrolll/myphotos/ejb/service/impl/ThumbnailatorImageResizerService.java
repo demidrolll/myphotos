@@ -3,6 +3,7 @@ package com.demidrolll.myphotos.ejb.service.impl;
 import com.demidrolll.myphotos.common.config.ImageCategory;
 import com.demidrolll.myphotos.ejb.service.ImageResizerService;
 import com.demidrolll.myphotos.exception.ApplicationException;
+import jakarta.enterprise.context.ApplicationScoped;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
 
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
+@ApplicationScoped
 public class ThumbnailatorImageResizerService implements ImageResizerService {
 
     @Override
