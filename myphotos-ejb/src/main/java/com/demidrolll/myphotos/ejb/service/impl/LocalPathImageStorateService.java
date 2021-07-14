@@ -6,9 +6,9 @@ import com.demidrolll.myphotos.ejb.service.FileNameGeneratorService;
 import com.demidrolll.myphotos.ejb.service.ImageStorageService;
 import com.demidrolll.myphotos.exception.ApplicationException;
 import com.demidrolll.myphotos.model.OriginalImage;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

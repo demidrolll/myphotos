@@ -7,12 +7,13 @@ import com.demidrolll.myphotos.ejb.service.ImageStorageService;
 import com.demidrolll.myphotos.ejb.service.interceptor.ImageResourceInterceptor;
 import com.demidrolll.myphotos.model.ImageResource;
 import com.demidrolll.myphotos.model.domain.Photo;
-import jakarta.ejb.LocalBean;
-import jakarta.ejb.Stateless;
-import jakarta.ejb.TransactionAttribute;
-import jakarta.ejb.TransactionAttributeType;
-import jakarta.inject.Inject;
-import jakarta.interceptor.Interceptors;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 
 @Stateless
 @LocalBean

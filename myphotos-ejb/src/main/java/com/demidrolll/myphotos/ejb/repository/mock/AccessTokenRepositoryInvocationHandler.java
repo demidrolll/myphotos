@@ -1,7 +1,6 @@
 package com.demidrolll.myphotos.ejb.repository.mock;
 
-import jakarta.enterprise.context.ApplicationScoped;
-
+import javax.enterprise.context.ApplicationScoped;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 

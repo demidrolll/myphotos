@@ -1,8 +1,8 @@
 package com.demidrolll.myphotos.ejb.service.impl;
 
 import com.demidrolll.myphotos.ejb.service.FileNameGeneratorService;
-import jakarta.enterprise.context.ApplicationScoped;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.UUID;
 
 @ApplicationScoped

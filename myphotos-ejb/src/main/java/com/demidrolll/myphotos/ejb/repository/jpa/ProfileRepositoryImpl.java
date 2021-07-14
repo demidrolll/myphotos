@@ -1,13 +1,12 @@
 package com.demidrolll.myphotos.ejb.repository.jpa;
 
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
+import com.demidrolll.myphotos.ejb.repository.jpa.StaticJpaQueryInitializer.JpaQuery;
 import com.demidrolll.myphotos.model.domain.Profile;
-import jakarta.enterprise.context.Dependent;
 
+import javax.enterprise.context.Dependent;
 import java.util.List;
 import java.util.Optional;
-
-import com.demidrolll.myphotos.ejb.repository.jpa.StaticJpaQueryInitializer.JpaQuery;
 
 @Dependent
 public class ProfileRepositoryImpl extends AbstractJpaRepository<Profile, Long> implements ProfileRepository {

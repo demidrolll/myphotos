@@ -1,11 +1,11 @@
 package com.demidrolll.myphotos.common.resource;
 
 import com.demidrolll.myphotos.exception.ConfigException;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Any;
-import jakarta.enterprise.inject.Instance;
-import jakarta.inject.Inject;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Any;
+import javax.enterprise.inject.Instance;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
 
