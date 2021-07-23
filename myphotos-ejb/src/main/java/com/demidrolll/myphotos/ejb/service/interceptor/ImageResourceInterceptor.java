@@ -1,10 +1,9 @@
 package com.demidrolll.myphotos.ejb.service.interceptor;
 
 import com.demidrolll.myphotos.model.ImageResource;
-
-import javax.interceptor.AroundInvoke;
-import javax.interceptor.Interceptor;
-import javax.interceptor.InvocationContext;
+import jakarta.interceptor.AroundInvoke;
+import jakarta.interceptor.Interceptor;
+import jakarta.interceptor.InvocationContext;
 
 @Interceptor
 public class ImageResourceInterceptor {

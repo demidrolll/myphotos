@@ -3,8 +3,8 @@ package com.demidrolll.myphotos.ejb.repository.jpa;
 import com.demidrolll.myphotos.ejb.repository.PhotoRepository;
 import com.demidrolll.myphotos.ejb.repository.jpa.StaticJpaQueryInitializer.JpaQuery;
 import com.demidrolll.myphotos.model.domain.Photo;
+import jakarta.enterprise.context.Dependent;
 
-import javax.enterprise.context.Dependent;
 import java.util.List;
 
 @Dependent

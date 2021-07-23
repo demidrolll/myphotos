@@ -3,10 +3,10 @@ package com.demidrolll.myphotos.ejb.repository.mock;
 import com.demidrolll.myphotos.ejb.repository.AccessTokenRepository;
 import com.demidrolll.myphotos.ejb.repository.PhotoRepository;
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
+import jakarta.enterprise.context.Dependent;
+import jakarta.enterprise.inject.Produces;
+import jakarta.inject.Inject;
 
-import javax.enterprise.context.Dependent;
-import javax.enterprise.inject.Produces;
-import javax.inject.Inject;
 import java.lang.reflect.Proxy;
 
 @Dependent

@@ -1,7 +1,8 @@
 package com.demidrolll.myphotos.common.producer;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;

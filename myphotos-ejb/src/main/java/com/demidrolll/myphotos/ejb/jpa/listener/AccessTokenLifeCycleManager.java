@@ -2,10 +2,10 @@ package com.demidrolll.myphotos.ejb.jpa.listener;
 
 import com.demidrolll.myphotos.exception.InvalidWorkFlowException;
 import com.demidrolll.myphotos.model.domain.AccessToken;
+import jakarta.inject.Inject;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 
-import javax.inject.Inject;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;

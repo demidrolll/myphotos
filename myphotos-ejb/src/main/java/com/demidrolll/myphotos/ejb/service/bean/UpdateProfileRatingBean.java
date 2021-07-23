@@ -1,10 +1,10 @@
 package com.demidrolll.myphotos.ejb.service.bean;
 
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
+import jakarta.ejb.Schedule;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 
-import javax.ejb.Schedule;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
 import java.util.logging.Logger;
 
 @Stateless

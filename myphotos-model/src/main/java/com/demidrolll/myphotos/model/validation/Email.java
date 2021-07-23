@@ -1,8 +1,9 @@
 package com.demidrolll.myphotos.model.validation;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
-import javax.validation.constraints.Pattern;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+import jakarta.validation.constraints.Pattern;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -14,7 +15,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Email {
 
-    String message() default "{javax.validation.constraints.Email.message}";
+    String message() default "{jakarta.validation.constraints.Email.message}";
 
     Class<?>[] groups() default {};
 

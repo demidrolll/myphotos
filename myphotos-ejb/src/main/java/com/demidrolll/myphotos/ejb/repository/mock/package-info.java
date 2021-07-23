@@ -1,4 +1,4 @@
 @Vetoed
 package com.demidrolll.myphotos.ejb.repository.mock;
 
-import javax.enterprise.inject.Vetoed;
+import jakarta.enterprise.inject.Vetoed;

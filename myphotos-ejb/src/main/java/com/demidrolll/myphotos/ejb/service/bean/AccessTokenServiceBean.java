@@ -6,10 +6,10 @@ import com.demidrolll.myphotos.exception.InvalidAccessTokenException;
 import com.demidrolll.myphotos.model.domain.AccessToken;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.service.AccessTokenService;
+import jakarta.ejb.Local;
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 
-import javax.ejb.Local;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

@@ -1,7 +1,8 @@
 package com.demidrolll.myphotos.model.validation;
 
-import javax.validation.Constraint;
-import javax.validation.Payload;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,7 +15,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = {EnglishLanguageConstraintValidator.class})
 public @interface EnglishLanguage {
 
-    String message() default "javax.validation.constraints.EnglishLanguage.message";
+    String message() default "jakarta.validation.constraints.EnglishLanguage.message";
 
     boolean withNumbers() default true;
 

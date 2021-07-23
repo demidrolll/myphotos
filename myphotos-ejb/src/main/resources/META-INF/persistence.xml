@@ -12,8 +12,8 @@
             <property name="eclipselink.logging.level.sql" value="FINE"/>
             <property name="eclipselink.logging.parameters" value="true"/>
 
-            <property name="javax.persistence.validation.group.pre-persist" value="javax.validation.groups.Default"/>
-            <property name="javax.persistence.validation.group.pre-update" value="javax.validation.groups.Default"/>
+            <property name="jakarta.persistence.validation.group.pre-persist" value="jakarta.validation.groups.Default"/>
+            <property name="jakarta.persistence.validation.group.pre-update" value="jakarta.validation.groups.Default"/>
         </properties>
     </persistence-unit>
 </persistence>
