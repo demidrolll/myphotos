@@ -7,14 +7,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "access_token")
@@ -32,9 +28,4 @@ public class AccessToken {
     @NotNull
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Profile profile;
-
-    @Column(name = "created", nullable = true, insertable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    private Date created;
 }

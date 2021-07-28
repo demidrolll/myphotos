@@ -9,4 +9,10 @@
             </entity-listener>
         </entity-listeners>
     </entity>
+    <mapped-superclass class="com.demidrolll.myphotos.model.domain.AbstractDomain">
+        <entity-listeners>
+            <entity-listener class="com.demidrolll.myphotos.ejb.jpa.listener.CreatedNowListener">
+            </entity-listener>
+        </entity-listeners>
+    </mapped-superclass>
 </entity-mappings>

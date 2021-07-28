@@ -25,9 +25,10 @@ public class PhotoRepositoryImpl extends AbstractJpaRepository<Photo, Long> impl
     @JpaQuery("SELECT COUNT(ph) FROM Photo ph WHERE ph.profile.id=:profileId")
     public int countProfilePhotos(Long profileId) {
         return em
-                .createNamedQuery("Photo.countProfilePhotos", Integer.class)
+                .createNamedQuery("Photo.countProfilePhotos", Long.class)
                 .setParameter("profileId", profileId)
-                .getSingleResult();
+                .getSingleResult()
+                .intValue();
     }
 
     @Override

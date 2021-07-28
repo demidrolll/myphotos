@@ -9,16 +9,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "profile")
@@ -48,11 +44,6 @@ public class Profile extends AbstractDomain {
     @NotNull
     @Size(max = 255)
     private String avatarUrl;
-
-    @Column(name = "created", nullable = false, insertable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    private Date created;
 
     @Column(name = "first_name", nullable = false, length = 60)
     @NotNull(message = "{Profile.firstName.NotNull}")

@@ -14,6 +14,8 @@ import jakarta.ejb.Asynchronous;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Local;
 import jakarta.ejb.LocalBean;
+import jakarta.ejb.Lock;
+import jakarta.ejb.LockType;
 import jakarta.ejb.Stateless;
 import jakarta.ejb.TransactionAttribute;
 import jakarta.ejb.TransactionAttributeType;
@@ -25,6 +27,7 @@ import java.util.Optional;
 @Stateless
 @LocalBean
 @Local(ProfileService.class)
+@Lock(LockType.READ)
 public class ProfileServiceBean implements ProfileService {
 
     @Inject

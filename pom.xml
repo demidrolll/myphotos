@@ -17,6 +17,18 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
     <packaging>pom</packaging>
@@ -28,5 +40,6 @@
         <module>myphotos-model</module>
         <module>myphotos-common</module>
         <module>myphotos-ear</module>
+        <module>myphotos-generator</module>
     </modules>
 </project>

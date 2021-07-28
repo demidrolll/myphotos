@@ -36,7 +36,7 @@ public class ProfileRepositoryImpl extends AbstractJpaRepository<Profile, Long> 
     @Override
     public void updateRating() {
         em
-                .createStoredProcedureQuery("update_rating")
+                .createStoredProcedureQuery("public.update_rating")
                 .execute();
     }
 

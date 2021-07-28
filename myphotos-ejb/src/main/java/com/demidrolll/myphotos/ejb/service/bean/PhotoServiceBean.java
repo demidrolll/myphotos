@@ -19,6 +19,8 @@ import jakarta.ejb.Asynchronous;
 import jakarta.ejb.EJB;
 import jakarta.ejb.Local;
 import jakarta.ejb.LocalBean;
+import jakarta.ejb.Lock;
+import jakarta.ejb.LockType;
 import jakarta.ejb.SessionContext;
 import jakarta.ejb.Stateless;
 import jakarta.ejb.TransactionAttribute;
@@ -31,6 +33,7 @@ import java.util.List;
 @Stateless
 @LocalBean
 @Local(PhotoService.class)
+@Lock(LockType.READ)
 public class PhotoServiceBean implements PhotoService {
 
     @Inject
