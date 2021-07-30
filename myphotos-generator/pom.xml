@@ -30,6 +30,11 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
             <groupId>com.demidrolll</groupId>
             <artifactId>myphotos-common</artifactId>
             <version>1.0</version>
