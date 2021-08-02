@@ -87,9 +87,9 @@ public class DataGeneratorServiceImpl implements DataGeneratorService, Serializa
     private void clearExternalResources() throws SQLException, IOException {
         clearDatabase();
         clearDirectory(storageRoot);
-        clearDirectory(mediaRoot + ImageCategory.LARGE_PHOTO.getRelativeRoot());
-        clearDirectory(mediaRoot + ImageCategory.SMALL_PHOTO.getRelativeRoot());
-        clearDirectory(mediaRoot + ImageCategory.PROFILE_AVATAR.getRelativeRoot());
+        clearDirectory(Paths.get(mediaRoot, ImageCategory.LARGE_PHOTO.getRelativeRoot()).toString());
+        clearDirectory(Paths.get(mediaRoot, ImageCategory.SMALL_PHOTO.getRelativeRoot()).toString());
+        clearDirectory(Paths.get(mediaRoot, ImageCategory.PROFILE_AVATAR.getRelativeRoot()).toString());
     }
 
     private void clearDirectory(String storageRoot) throws IOException {

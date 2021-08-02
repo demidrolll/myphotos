@@ -61,9 +61,9 @@ public class LocalPathImageStorateService implements ImageStorageService {
     @Override
     public String savePublicImage(ImageCategory imageCategory, Path path) {
         String fileName = fileNameGeneratorService.generateUniqueFileName();
-        Path destinationPath = Paths.get(mediaRoot, imageCategory.getRelativeRoot() + fileName);
+        Path destinationPath = Paths.get(mediaRoot, imageCategory.getRelativeRoot(), fileName);
         saveImage(path, destinationPath);
-        return "/" + imageCategory.getRelativeRoot() + fileName;
+        return Paths.get("/", imageCategory.getRelativeRoot(), fileName).toString();
     }
 
     @Override

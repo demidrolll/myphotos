@@ -8,8 +8,8 @@ import lombok.Getter;
 public enum ImageCategory {
 
     PROFILE_AVATAR("media/avatar/", 128, 128, true, 0.8),
-    SMALL_PHOTO("media/photo", 400, 250, true, 0.7),
-    LARGE_PHOTO("media/photo", 1600, 900, false, 1.0),
+    SMALL_PHOTO("media/photo/", 400, 250, true, 0.7),
+    LARGE_PHOTO("media/photo/", 1600, 900, false, 1.0),
     ;
 
     private final String relativeRoot;
