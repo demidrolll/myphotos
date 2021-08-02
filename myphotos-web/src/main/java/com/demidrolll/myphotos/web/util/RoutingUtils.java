@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 
-public class RoutingUtils {
+public final class RoutingUtils {
 
     public static void forwardToPage(String pageName, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("currentPage", String.format("../view/%s.jsp", pageName));

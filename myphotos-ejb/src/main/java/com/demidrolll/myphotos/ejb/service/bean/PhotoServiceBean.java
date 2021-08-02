@@ -92,7 +92,7 @@ public class PhotoServiceBean implements PhotoService {
         photo.setDownloads(photo.getDownloads() + 1);
         photoRepository.update(photo);
 
-        throw new UnsupportedOperationException("Not implemented yet");
+        return imageStorageService.getOriginalImage(photo.getOriginalUrl());
     }
 
     @Override
