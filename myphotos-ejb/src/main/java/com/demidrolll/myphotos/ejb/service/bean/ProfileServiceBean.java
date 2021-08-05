@@ -4,6 +4,7 @@ import com.demidrolll.myphotos.common.annotation.cdi.Property;
 import com.demidrolll.myphotos.common.config.ImageCategory;
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
 import com.demidrolll.myphotos.ejb.service.ImageStorageService;
+import com.demidrolll.myphotos.ejb.service.impl.ProfileUidServiceManager;
 import com.demidrolll.myphotos.ejb.service.interceptor.AsyncOperationInterceptor;
 import com.demidrolll.myphotos.exception.ObjectNotFoundException;
 import com.demidrolll.myphotos.model.AsyncOperation;
@@ -22,6 +23,7 @@ import jakarta.ejb.TransactionAttributeType;
 import jakarta.inject.Inject;
 import jakarta.interceptor.Interceptors;
 
+import java.util.List;
 import java.util.Optional;
 
 @Stateless
@@ -43,6 +45,9 @@ public class ProfileServiceBean implements ProfileService {
     @Inject
     private ImageStorageService imageStorageService;
 
+    @Inject
+    private ProfileUidServiceManager profileUidServiceManager;
+
     @Override
     public Profile findById(Long id) throws ObjectNotFoundException {
         return profileRepository.findById(id)
@@ -62,7 +67,23 @@ public class ProfileServiceBean implements ProfileService {
 
     @Override
     public void signUp(Profile profile, boolean uploadProfileAvatar) {
+        if (profile.getUid() == null) {
+            setProfileUid(profile);
+        }
         profileRepository.create(profile);
+    }
+
+    private void setProfileUid(Profile profile) {
+        List<String> uids = profileUidServiceManager.getProfileUidCandidates(profile.getFirstName(), profile.getLastName());
+        List<String> existUids = profileRepository.findUids(uids);
+        for (String uid : uids) {
+            if (!existUids.contains(uid)) {
+                profile.setUid(uid);
+                return;
+            }
+        }
+
+        profile.setUid(profileUidServiceManager.getDefaultUid());
     }
 
     @Override
