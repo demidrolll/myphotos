@@ -1,6 +1,8 @@
 package com.demidrolll.myphotos.ejb.service.bean;
 
+import com.demidrolll.myphotos.ejb.model.UrlImageResource;
 import com.demidrolll.myphotos.exception.ObjectNotFoundException;
+import com.demidrolll.myphotos.model.AsyncOperation;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.service.ProfileService;
 import com.demidrolll.myphotos.service.ProfileSignUpService;
@@ -18,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.demidrolll.myphotos.common.config.Constants.DEFAULT_ASYNC_OPERATION_TIMEOUT_IN_MILLIS;
+
 @Stateful
 @StatefulTimeout(value = 30, unit = TimeUnit.MINUTES)
 public class ProfileSignUpServiceBean implements ProfileSignUpService, Serializable {
@@ -33,6 +37,7 @@ public class ProfileSignUpServiceBean implements ProfileSignUpService, Serializa
     @Override
     public void createSignUpProfile(Profile profile) {
         this.profile = profile;
+        profileService.transliterateSocialProfile(profile);
     }
 
     @Override
@@ -47,6 +52,25 @@ public class ProfileSignUpServiceBean implements ProfileSignUpService, Serializa
     @Remove
     public void completeSignUp() {
         profileService.signUp(profile, false);
+        if (profile.getAvatarUrl() != null) {
+            profileService.uploadNewAvatar(profile, new UrlImageResource(profile.getAvatarUrl()), new AsyncOperation<>() {
+
+                @Override
+                public long getTimeOutInMillis() {
+                    return DEFAULT_ASYNC_OPERATION_TIMEOUT_IN_MILLIS;
+                }
+
+                @Override
+                public void onSuccess(Profile result) {
+                    logger.log(Level.INFO, "Profile avatar successful saved to {0}", result.getAvatarUrl());
+                }
+
+                @Override
+                public void onFailed(Throwable throwable) {
+                    logger.log(Level.WARNING, "Profile avatar can't saved", throwable);
+                }
+            });
+        }
     }
 
     @Override

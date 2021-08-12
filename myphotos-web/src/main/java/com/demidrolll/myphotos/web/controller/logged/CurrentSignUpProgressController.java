@@ -2,6 +2,7 @@ package com.demidrolll.myphotos.web.controller.logged;
 
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.web.component.ProfileSignUpServiceProxy;
+import com.demidrolll.myphotos.web.form.ProfileForm;
 import com.demidrolll.myphotos.web.util.RoutingUtils;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -21,7 +22,7 @@ public class CurrentSignUpProgressController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Profile profile = profileSignUpService.getCurrentProfile();
-        req.setAttribute("profile", profile);
+        req.setAttribute("profile", new ProfileForm(profile));
         RoutingUtils.forwardToPage("sign-up", req, resp);
     }
 }

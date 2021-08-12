@@ -2,8 +2,10 @@ package com.demidrolll.myphotos.ejb.service.bean;
 
 import com.demidrolll.myphotos.common.annotation.cdi.Property;
 import com.demidrolll.myphotos.common.config.ImageCategory;
+import com.demidrolll.myphotos.ejb.model.UrlImageResource;
 import com.demidrolll.myphotos.ejb.repository.ProfileRepository;
 import com.demidrolll.myphotos.ejb.service.ImageStorageService;
+import com.demidrolll.myphotos.ejb.service.TranslitConverter;
 import com.demidrolll.myphotos.ejb.service.impl.ProfileUidServiceManager;
 import com.demidrolll.myphotos.ejb.service.interceptor.AsyncOperationInterceptor;
 import com.demidrolll.myphotos.exception.ObjectNotFoundException;
@@ -48,6 +50,9 @@ public class ProfileServiceBean implements ProfileService {
     @Inject
     private ProfileUidServiceManager profileUidServiceManager;
 
+    @Inject
+    private TranslitConverter translitConverter;
+
     @Override
     public Profile findById(Long id) throws ObjectNotFoundException {
         return profileRepository.findById(id)
@@ -71,6 +76,9 @@ public class ProfileServiceBean implements ProfileService {
             setProfileUid(profile);
         }
         profileRepository.create(profile);
+        if (uploadProfileAvatar && profile.getAvatarUrl() != null) {
+            uploadNewAvatar(profile, new UrlImageResource(profile.getAvatarUrl()));
+        }
     }
 
     private void setProfileUid(Profile profile) {
@@ -88,6 +96,10 @@ public class ProfileServiceBean implements ProfileService {
 
     @Override
     public void transliterateSocialProfile(Profile profile) {
+        Optional.ofNullable(profile.getFirstName()).map(translitConverter::translit).ifPresent(profile::setFirstName);
+        Optional.ofNullable(profile.getLastName()).map(translitConverter::translit).ifPresent(profile::setLastName);
+        Optional.ofNullable(profile.getJobTitle()).map(translitConverter::translit).ifPresent(profile::setJobTitle);
+        Optional.ofNullable(profile.getLocation()).map(translitConverter::translit).ifPresent(profile::setLocation);
     }
 
     @Override

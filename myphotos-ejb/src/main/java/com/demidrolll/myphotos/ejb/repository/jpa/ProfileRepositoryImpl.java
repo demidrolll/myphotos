@@ -41,7 +41,7 @@ public class ProfileRepositoryImpl extends AbstractJpaRepository<Profile, Long> 
     }
 
     @Override
-    @JpaQuery("SELECT p.uid FROM Profile p WHERE p.uid = :uids")
+    @JpaQuery("SELECT p.uid FROM Profile p WHERE p.uid in :uids")
     public List<String> findUids(List<String> uids) {
         return em
                 .createNamedQuery("Profile.findUids", String.class)

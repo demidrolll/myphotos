@@ -42,7 +42,7 @@ public abstract class AbstractSignUpController extends HttpServlet {
         Optional<Profile> optionalProfile = profileService.findByEmail(signUpProfile.getEmail());
         if (optionalProfile.isPresent()) {
             Profile profile = optionalProfile.get();
-            RoutingUtils.redirectToUri("/" + profile.getId(), req, resp);
+            RoutingUtils.redirectToUri("/" + profile.getUid(), req, resp);
         } else {
             profileSignUpService.createSignUpProfile(signUpProfile);
             RoutingUtils.redirectToUri("/sign-up", req, resp);
