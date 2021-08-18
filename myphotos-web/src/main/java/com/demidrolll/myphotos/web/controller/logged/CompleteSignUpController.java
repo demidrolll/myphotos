@@ -3,6 +3,7 @@ package com.demidrolll.myphotos.web.controller.logged;
 import com.demidrolll.myphotos.common.annotation.group.SignUpGroup;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.web.component.ProfileSignUpServiceProxy;
+import com.demidrolll.myphotos.web.security.SecurityUtils;
 import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
 
@@ -24,6 +25,8 @@ public class CompleteSignUpController extends AbstractProfileSaveController {
     }
 
     private void reloginWithUserRole(Profile profile) {
+        SecurityUtils.logout();
+        SecurityUtils.authentificate(profile);
     }
 
     @Override

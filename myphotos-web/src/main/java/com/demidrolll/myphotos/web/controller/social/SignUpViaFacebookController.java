@@ -2,6 +2,7 @@ package com.demidrolll.myphotos.web.controller.social;
 
 import com.demidrolll.myphotos.common.annotation.qualifier.Facebook;
 import com.demidrolll.myphotos.service.SocialService;
+import com.demidrolll.myphotos.web.security.SecurityUtils;
 import com.demidrolll.myphotos.web.util.RoutingUtils;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -21,6 +22,10 @@ public class SignUpViaFacebookController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RoutingUtils.redirectToUri(socialService.getAuthorizeUrl(), req, resp);
+        if (SecurityUtils.isAuthenticated()) {
+            RoutingUtils.redirectToValidAuthUrl(req, resp);
+        } else {
+            RoutingUtils.redirectToUri(socialService.getAuthorizeUrl(), req, resp);
+        }
     }
 }

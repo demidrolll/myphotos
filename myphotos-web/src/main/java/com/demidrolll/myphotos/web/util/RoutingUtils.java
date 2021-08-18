@@ -1,5 +1,6 @@
 package com.demidrolll.myphotos.web.util;
 
+import com.demidrolll.myphotos.web.security.SecurityUtils;
 import jakarta.json.JsonObject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,6 +23,14 @@ public final class RoutingUtils {
 
     public static void redirectToUri(String url, HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.sendRedirect(url);
+    }
+
+    public static void redirectToValidAuthUrl(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (SecurityUtils.isTempAuthenticated()) {
+            redirectToUri("/sign-up", request, response);
+        } else {
+            redirectToUri("/" + SecurityUtils.getCurrentProfile().getUid(), request, response);
+        }
     }
 
     public static void sendJson(JsonObject json, HttpServletRequest request, HttpServletResponse response) throws IOException {

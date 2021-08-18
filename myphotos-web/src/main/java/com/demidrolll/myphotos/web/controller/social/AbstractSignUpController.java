@@ -4,6 +4,7 @@ import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.service.ProfileService;
 import com.demidrolll.myphotos.service.SocialService;
 import com.demidrolll.myphotos.web.component.ProfileSignUpServiceProxy;
+import com.demidrolll.myphotos.web.security.SecurityUtils;
 import com.demidrolll.myphotos.web.util.RoutingUtils;
 import jakarta.ejb.EJB;
 import jakarta.inject.Inject;
@@ -29,11 +30,15 @@ public abstract class AbstractSignUpController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Optional<String> code = Optional.ofNullable(req.getParameter("code"));
-        if (code.isPresent()) {
-            processSignUp(code.get(), req, resp);
+        if (SecurityUtils.isAuthenticated()) {
+            RoutingUtils.redirectToValidAuthUrl(req, resp);
         } else {
-            RoutingUtils.redirectToUri("/", req, resp);
+            Optional<String> code = Optional.ofNullable(req.getParameter("code"));
+            if (code.isPresent()) {
+                processSignUp(code.get(), req, resp);
+            } else {
+                RoutingUtils.redirectToUri("/", req, resp);
+            }
         }
     }
 
@@ -42,8 +47,10 @@ public abstract class AbstractSignUpController extends HttpServlet {
         Optional<Profile> optionalProfile = profileService.findByEmail(signUpProfile.getEmail());
         if (optionalProfile.isPresent()) {
             Profile profile = optionalProfile.get();
+            SecurityUtils.authentificate(profile);
             RoutingUtils.redirectToUri("/" + profile.getUid(), req, resp);
         } else {
+            SecurityUtils.authentificate();
             profileSignUpService.createSignUpProfile(signUpProfile);
             RoutingUtils.redirectToUri("/sign-up", req, resp);
         }
