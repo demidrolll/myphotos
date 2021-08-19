@@ -4,12 +4,12 @@ import com.demidrolll.myphotos.exception.InvalidWorkFlowException;
 import com.demidrolll.myphotos.exception.ObjectNotFoundException;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.service.ProfileSignUpService;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
-import jakarta.ejb.EJB;
-import jakarta.enterprise.context.SessionScoped;
-import jakarta.inject.Inject;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;

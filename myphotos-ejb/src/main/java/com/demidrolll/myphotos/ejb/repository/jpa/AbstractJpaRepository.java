@@ -1,9 +1,9 @@
 package com.demidrolll.myphotos.ejb.repository.jpa;
 
 import com.demidrolll.myphotos.ejb.repository.EntityRepository;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.Optional;
 
 public abstract class AbstractJpaRepository<T, ID> implements EntityRepository<T, ID> {

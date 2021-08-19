@@ -2,9 +2,9 @@ package com.demidrolll.myphotos.ejb.service.impl;
 
 import com.demidrolll.myphotos.common.annotation.cdi.PropertiesSource;
 import com.demidrolll.myphotos.ejb.service.TranslitConverter;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.Properties;
 import java.util.stream.Collectors;
 

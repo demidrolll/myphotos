@@ -3,9 +3,10 @@ package com.demidrolll.myphotos.web.form;
 import com.demidrolll.myphotos.common.annotation.group.SignUpGroup;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.model.validation.EnglishLanguage;
-import jakarta.validation.constraints.AssertTrue;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class ProfileForm {
 

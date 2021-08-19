@@ -2,12 +2,12 @@ package com.demidrolll.myphotos.ejb.service.impl;
 
 import com.demidrolll.myphotos.ejb.model.ProfileUidGenerator;
 import com.demidrolll.myphotos.ejb.service.ProfileUidService;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Any;
-import jakarta.enterprise.inject.Instance;
-import jakarta.enterprise.util.AnnotationLiteral;
-import jakarta.inject.Inject;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Any;
+import javax.enterprise.inject.Instance;
+import javax.enterprise.util.AnnotationLiteral;
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

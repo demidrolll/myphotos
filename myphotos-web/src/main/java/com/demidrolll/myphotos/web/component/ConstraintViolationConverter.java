@@ -1,9 +1,8 @@
 package com.demidrolll.myphotos.web.component;
 
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Path;
-
+import javax.enterprise.context.ApplicationScoped;
+import javax.validation.ConstraintViolation;
+import javax.validation.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

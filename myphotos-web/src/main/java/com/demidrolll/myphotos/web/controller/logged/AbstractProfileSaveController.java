@@ -5,15 +5,15 @@ import com.demidrolll.myphotos.web.component.ConstraintViolationConverter;
 import com.demidrolll.myphotos.web.component.FormReader;
 import com.demidrolll.myphotos.web.form.ProfileForm;
 import com.demidrolll.myphotos.web.util.RoutingUtils;
-import jakarta.annotation.Resource;
-import jakarta.inject.Inject;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validator;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
 import java.io.IOException;
 import java.util.Set;
 

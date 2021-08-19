@@ -2,8 +2,8 @@ package com.demidrolll.myphotos.ejb.service.impl;
 
 import com.demidrolll.myphotos.ejb.model.ProfileUidGenerator;
 import com.demidrolll.myphotos.ejb.service.ProfileUidService;
-import jakarta.enterprise.context.ApplicationScoped;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.util.List;
 
 @ApplicationScoped

@@ -2,11 +2,11 @@ package com.demidrolll.myphotos.web.listener;
 
 import com.demidrolll.myphotos.common.annotation.qualifier.GooglePlus;
 import com.demidrolll.myphotos.service.SocialService;
-import jakarta.inject.Inject;
-import jakarta.servlet.ServletContextEvent;
-import jakarta.servlet.ServletContextListener;
-import jakarta.servlet.annotation.WebListener;
 
+import javax.inject.Inject;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import java.util.logging.Logger;
 
 @WebListener

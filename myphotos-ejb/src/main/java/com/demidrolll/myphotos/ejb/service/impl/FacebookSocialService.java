@@ -12,8 +12,9 @@ import com.restfb.Version;
 import com.restfb.scope.FacebookPermissions;
 import com.restfb.scope.ScopeBuilder;
 import com.restfb.types.User;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 
 @Facebook
 @ApplicationScoped

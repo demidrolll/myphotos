@@ -1,9 +1,8 @@
 package com.demidrolll.myphotos.common.producer;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.enterprise.inject.Produces;
-import jakarta.enterprise.inject.spi.InjectionPoint;
-
+import javax.enterprise.context.Dependent;
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 import java.util.logging.Logger;
 
 @Dependent

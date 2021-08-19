@@ -14,20 +14,20 @@ import com.demidrolll.myphotos.model.SortMode;
 import com.demidrolll.myphotos.model.domain.Photo;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.service.PhotoService;
-import jakarta.annotation.Resource;
-import jakarta.ejb.Asynchronous;
-import jakarta.ejb.EJB;
-import jakarta.ejb.Local;
-import jakarta.ejb.LocalBean;
-import jakarta.ejb.Lock;
-import jakarta.ejb.LockType;
-import jakarta.ejb.SessionContext;
-import jakarta.ejb.Stateless;
-import jakarta.ejb.TransactionAttribute;
-import jakarta.ejb.TransactionAttributeType;
-import jakarta.inject.Inject;
-import jakarta.interceptor.Interceptors;
 
+import javax.annotation.Resource;
+import javax.ejb.Asynchronous;
+import javax.ejb.EJB;
+import javax.ejb.Local;
+import javax.ejb.LocalBean;
+import javax.ejb.Lock;
+import javax.ejb.LockType;
+import javax.ejb.SessionContext;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
+import javax.interceptor.Interceptors;
 import java.util.List;
 
 @Stateless

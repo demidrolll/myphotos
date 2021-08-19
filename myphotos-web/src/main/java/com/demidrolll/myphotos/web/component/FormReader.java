@@ -1,10 +1,10 @@
 package com.demidrolll.myphotos.web.component;
 
 import com.demidrolll.myphotos.exception.ApplicationException;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.beanutils.BeanUtils;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 
 @ApplicationScoped

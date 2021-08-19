@@ -1,8 +1,8 @@
 package com.demidrolll.myphotos.common.resource;
 
 import com.demidrolll.myphotos.exception.ConfigException;
-import jakarta.enterprise.context.ApplicationScoped;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.io.InputStream;
 

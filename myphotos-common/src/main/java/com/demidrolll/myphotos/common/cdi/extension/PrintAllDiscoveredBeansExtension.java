@@ -1,16 +1,15 @@
 package com.demidrolll.myphotos.common.cdi.extension;
 
-import jakarta.enterprise.event.Observes;
-import jakarta.enterprise.inject.spi.AfterBeanDiscovery;
-import jakarta.enterprise.inject.spi.AfterDeploymentValidation;
-import jakarta.enterprise.inject.spi.BeanManager;
-import jakarta.enterprise.inject.spi.BeforeBeanDiscovery;
-import jakarta.enterprise.inject.spi.Extension;
-import jakarta.enterprise.inject.spi.ProcessAnnotatedType;
-import jakarta.enterprise.inject.spi.ProcessBean;
-import jakarta.enterprise.inject.spi.ProcessInjectionTarget;
-import jakarta.enterprise.inject.spi.ProcessProducer;
-
+import javax.enterprise.event.Observes;
+import javax.enterprise.inject.spi.AfterBeanDiscovery;
+import javax.enterprise.inject.spi.AfterDeploymentValidation;
+import javax.enterprise.inject.spi.BeanManager;
+import javax.enterprise.inject.spi.BeforeBeanDiscovery;
+import javax.enterprise.inject.spi.Extension;
+import javax.enterprise.inject.spi.ProcessAnnotatedType;
+import javax.enterprise.inject.spi.ProcessBean;
+import javax.enterprise.inject.spi.ProcessInjectionTarget;
+import javax.enterprise.inject.spi.ProcessProducer;
 import java.lang.annotation.Annotation;
 import java.util.Set;
 import java.util.logging.Logger;

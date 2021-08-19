@@ -4,8 +4,9 @@ import com.demidrolll.myphotos.common.annotation.group.SignUpGroup;
 import com.demidrolll.myphotos.model.domain.Profile;
 import com.demidrolll.myphotos.web.component.ProfileSignUpServiceProxy;
 import com.demidrolll.myphotos.web.security.SecurityUtils;
-import jakarta.inject.Inject;
-import jakarta.servlet.annotation.WebServlet;
+
+import javax.inject.Inject;
+import javax.servlet.annotation.WebServlet;
 
 @WebServlet(urlPatterns = "/sign-up/complete", loadOnStartup = 1)
 public class CompleteSignUpController extends AbstractProfileSaveController {

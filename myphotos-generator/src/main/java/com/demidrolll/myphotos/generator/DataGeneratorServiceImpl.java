@@ -8,12 +8,10 @@ import com.demidrolll.myphotos.ejb.service.bean.ProfileServiceBean;
 import com.demidrolll.myphotos.ejb.service.bean.UpdateProfileRatingBean;
 import com.demidrolll.myphotos.model.domain.Photo;
 import com.demidrolll.myphotos.model.domain.Profile;
-import jakarta.annotation.Resource;
-import jakarta.ejb.EJB;
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.io.IOException;
 import java.io.Serializable;
@@ -32,7 +30,7 @@ import java.util.List;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 @Slf4j
-@Dependent
+//@Dependent
 public class DataGeneratorServiceImpl implements DataGeneratorService, Serializable {
 
     @Inject
@@ -53,7 +51,7 @@ public class DataGeneratorServiceImpl implements DataGeneratorService, Serializa
     @EJB
     private UpdateProfileRatingBean updateProfileRatingBean;
 
-    @Resource(lookup = "jdbc/MyPhotosDBPool")
+    //@Resource(lookup = "jboss/MyPhotosDBPool")
     private DataSource dataSource;
 
     @Inject
