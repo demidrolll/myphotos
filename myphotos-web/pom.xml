@@ -72,11 +72,6 @@
             <artifactId>shiro-web</artifactId>
             <version>1.7.1</version>
         </dependency>
-        <dependency>
-            <groupId>com.flowlogix</groupId>
-            <artifactId>shiro-ee</artifactId>
-            <version>4.0.3</version>
-        </dependency>
     </dependencies>
 
     <build>
