@@ -37,6 +37,10 @@ public final class RoutingUtils {
         sendJson("application/json", json, request, response);
     }
 
+    public static void sendFileUploaderJson(JsonObject json, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        sendJson("text/plain", json, request, response);
+    }
+
     private static void sendJson(String contentType, JsonObject json, HttpServletRequest request, HttpServletResponse response) throws IOException {
         String content = json.toString();
         int length = content.getBytes(StandardCharsets.UTF_8).length;
