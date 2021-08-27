@@ -1,4 +1,4 @@
-<%--
+<%-- 
     Author       : devstudy,
     Organization : </>DevStudy.net
 --%>
@@ -24,10 +24,10 @@
         <h1><strong id="firstName">${profile.firstName}</strong> <strong id="lastName">${profile.lastName}</strong></h1>
         <h4><span id="jobTitle">${profile.jobTitle}</span> <span id="in">in</span> <span id="location">${profile.location}</span></h4>
         <c:if test="${gotoProfileAvailable}">
-            <br>
-            <ul class="actions fit small">
-                <li><a href="/${profile.uid}" class="button special small">Go to my profile</a></li>
-            </ul>
+        <br>
+        <ul class="actions fit small">
+            <li><a href="/${profile.uid}" class="button special small">Go to my profile</a></li>
+        </ul>
         </c:if>
     </div>
 </header>
@@ -38,29 +38,28 @@
             <input type="hidden" name="avatarUrl" value="${profile.avatarUrl}" />
             <div class="row uniform 50%">
                 <div class="${'6u 12u$(xsmall)'}">
-                    <tags:input-text name="firstName" value="${profile.firstName}" placeholder="Your first name" bindId="firstName"/>
+                    <tags:input-text name="firstName" value="${profile.firstName}" placeholder="Your first name" bindId="firstName" />
                 </div>
                 <div class="${'6u$ 12u$(xsmall)'}">
-                    <tags:input-text name="lastName"  value="${profile.lastName}" placeholder="Your last name"  bindId="lastName"/>
+                    <tags:input-text name="lastName"  value="${profile.lastName}" placeholder="Your last name" bindId="lastName" />
                 </div>
                 <div class="${'6u 12u$(xsmall)'}">
-                    <tags:input-text name="jobTitle"  value="${profile.jobTitle}" placeholder="Your job title" bindId="jobTitle"/>
+                    <tags:input-text name="jobTitle"  value="${profile.jobTitle}" placeholder="Your job title" bindId="jobTitle" />
                 </div>
                 <div class="${'6u$ 12u$(xsmall)'}">
-                    <tags:input-text name="location"  value="${profile.location}" placeholder="Where are you from" bindId="location"/>
+                    <tags:input-text name="location"  value="${profile.location}" placeholder="Where are you from" bindId="location" />
                 </div>
                 <c:if test="${isAgreeCheckBoxAvailable}">
                     <div class="${'12u$'}">
                         <c:set var="label">I agree to the <a href="/terms">terms of service</a></c:set>
-                        <tags:input-checkbox name="agree" label="${label}" value="${profile.agree}"/>
-                        <label for="agree">${label}</label>
+                        <tags:input-checkbox label="${label}" name="agree" value="${profile.agree}" />
                     </div>
                 </c:if>
                 <div class="${'12u$'}">
                     <ul class="actions">
                         <li><input type="submit" value="${saveCaption}" class="special small" /></li>
                         <c:if test="${isCancelBtnAvailable}">
-                            <li><a href="/${profile.uid}" class="button small">Cancel</a></li>
+                        <li><a href="/${profile.uid}" class="button small">Cancel</a></li>
                         </c:if>
                     </ul>
                 </div>

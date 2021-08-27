@@ -6,8 +6,9 @@ import com.demidrolll.myphotos.web.component.HttpStatusException;
 import com.demidrolll.myphotos.web.model.ErrorModel;
 import com.demidrolll.myphotos.web.util.RoutingUtils;
 import com.demidrolll.myphotos.web.util.WebUtils;
-import jakarta.inject.Inject;
 
+import javax.ejb.EJBException;
+import javax.inject.Inject;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.servlet.FilterChain;
@@ -77,7 +78,9 @@ public class ErrorFilter extends AbstractFilter {
 
     private Throwable unWrapThrowable(Throwable th) {
         if (th instanceof ServletException && th.getCause() != null) {
-            return th.getCause();
+            return unWrapThrowable(th.getCause());
+        } else if (th instanceof EJBException && th.getCause() != null) {
+            return unWrapThrowable(th.getCause());
         } else {
             return th;
         }
@@ -96,7 +99,7 @@ public class ErrorFilter extends AbstractFilter {
 
         @Override
         public void sendError(int sc) throws IOException {
-            super.sendError(sc, EMPTY_MESSAGE);
+            throw new HttpStatusException(sc, EMPTY_MESSAGE);
         }
     }
 }

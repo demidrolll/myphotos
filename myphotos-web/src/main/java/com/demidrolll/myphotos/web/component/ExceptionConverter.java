@@ -1,9 +1,9 @@
 package com.demidrolll.myphotos.web.component;
 
 import com.demidrolll.myphotos.web.model.ErrorModel;
-import jakarta.inject.Inject;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.Map;
 
 import static com.demidrolll.myphotos.web.Constants.DEFAULT_ERROR_MESSAGE;
@@ -14,9 +14,11 @@ import static javax.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR;
 public class ExceptionConverter {
 
     @Inject
-    private Map<Class<? extends Throwable>, Integer> statusCodeMap;
+    @StatusCodeMap
+    private Map<Class, Integer> statusCodeMap;
 
     @Inject
+    @StatusMessageMap
     private Map<Integer, String> statusMessagesMap;
 
     public ErrorModel convertToHttpStatus(Throwable throwable) {

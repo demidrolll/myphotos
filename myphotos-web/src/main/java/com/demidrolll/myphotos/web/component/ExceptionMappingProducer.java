@@ -6,7 +6,7 @@ import com.demidrolll.myphotos.exception.ObjectNotFoundException;
 import com.demidrolll.myphotos.exception.ValidationException;
 
 import javax.enterprise.context.Dependent;
-import javax.ws.rs.Produces;
+import javax.enterprise.inject.Produces;
 import java.util.Map;
 
 import static com.demidrolll.myphotos.web.Constants.DEFAULT_ERROR_MESSAGE;
@@ -20,7 +20,8 @@ import static javax.servlet.http.HttpServletResponse.SC_UNAUTHORIZED;
 public class ExceptionMappingProducer {
 
     @Produces
-    public Map<Class<? extends Throwable>, Integer> getExceptionToStatusCodeMapping() {
+    @StatusCodeMap
+    public Map<Class, Integer> getExceptionToStatusCodeMapping() {
         return Map.of(
                 ObjectNotFoundException.class, SC_NOT_FOUND,
                 ValidationException.class, SC_BAD_REQUEST,
@@ -30,6 +31,7 @@ public class ExceptionMappingProducer {
     }
 
     @Produces
+    @StatusMessageMap
     public Map<Integer, String> getStatusMessagesMapping() {
         return Map.of(
                 SC_BAD_REQUEST, "Current request is invalid",
