@@ -6,6 +6,8 @@ public final class Constants {
 
     public static final String EMPTY_MESSAGE = "";
 
+    public static final String DEFAULT_ERROR_MESSAGE = "Internal error";
+
     private Constants() {
     }
 }
