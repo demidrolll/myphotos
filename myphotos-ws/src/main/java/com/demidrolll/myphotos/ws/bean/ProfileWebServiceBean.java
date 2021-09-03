@@ -17,6 +17,7 @@ import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
+import javax.inject.Inject;
 import javax.jws.WebService;
 
 @Singleton
@@ -35,7 +36,7 @@ public class ProfileWebServiceBean implements ProfileWebService {
     @EJB
     private PhotoService photoService;
 
-    @EJB
+    @Inject
     private ModelConverter modelConverter;
 
     @Override

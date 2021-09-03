@@ -25,6 +25,7 @@ import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
+import javax.inject.Inject;
 import javax.jws.WebService;
 import javax.xml.ws.soap.MTOM;
 
@@ -42,10 +43,10 @@ public class PhotoWebServiceBean implements PhotoWebService {
     @EJB
     private PhotoService photoService;
 
-    @EJB
+    @Inject
     private ModelConverter modelConverter;
 
-    @EJB
+    @Inject
     private UrlConverter urlConverter;
 
     @Override
