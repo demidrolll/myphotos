@@ -41,7 +41,7 @@ public class DefaultModelConverter implements ModelConverter {
                 Object value = propertyUtils.getProperty(source, name);
                 if (value != null) {
                     Object convertedValue = convertValue(propertyUtils, result, name, value);
-                    propertyUtils.setProperty(result, name, value);
+                    propertyUtils.setProperty(result, name, convertedValue);
                 }
             }
         }
